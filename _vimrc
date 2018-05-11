@@ -44,6 +44,9 @@ set noshowmode
 nnoremap ; :
 nnoremap y$ Y
 
+" Toogle nerdtree ctrl + n
+map <C-n> :NERDTreeToggle<CR>
+
 " Add trailing white space and tab
 set listchars=tab:~-,nbsp:_,trail:`
 set list
