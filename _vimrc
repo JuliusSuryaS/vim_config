@@ -14,42 +14,53 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Yggdroot/indentLine'
+Plugin 'flazz/vim-colorschemes'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'nathanaelkane/vim-indent-guides'
 " ----------------
 " Until here
 
 call vundle#end()
 filetype plugin indent on
 "=================================
-
-
 "=================================
-" GUI config
-"=================================
-set noeb vb t_vb=
-au GUIEnter * set vb t_vb=
-set guioptions-=T "remove toolbar
-set nu "set number on ('set rnu' -> relative number)
-set gfn=Hack:h10:cANSI:qDRAFT "set font
-set lines=50 "set height
-set columns=90 "set width
-colorscheme onehalfdark "set theme
-syntax on
+
+" Encoding
+" ========
 set laststatus=2 "for status line
+set encoding=utf-8
 
-"Not showing what mode currently is
-"(replaced with lightline)
+" Disable mode (insert/visual/block) status (replaced with lightline)
+" =========================================
 set noshowmode
 
 " Remap config
+" ============
 nnoremap ; :
 nnoremap y$ Y
+nnoremap <F1> :call ToggleRNU()<CR> "toggle Relative number"
 
-" Toogle nerdtree ctrl + n
-map <C-n> :NERDTreeToggle<CR>
+" Handle copy-paste into clipboard
+" ===============================
+set clipboard+=unnamed
+set pastetoggle=<F2>
+
 
 " Add trailing white space and tab
-set listchars=tab:~-,nbsp:_,trail:`
+" ================================
+set listchars=tab:>-,nbsp:_,trail:.
 set list
+
+" Indent and numbering
+" ====================
+set nu
+set tabstop=4
+" set expandtab "(tab to space)
+set autoindent
+set shiftwidth=4
+
+
 "=================================
 
 "=================================
@@ -61,7 +72,37 @@ set undodir=C:/vim_tmp,.
 "=================================
 
 
+"=================================
+" Plugin cofig
+"=================================
+
+" Toogle nerdtree ctrl + n
+map <C-n> :NERDTreeToggle<CR>
+
 " Lightline config
 let g:lightline = {
 			\'colorscheme':'jellybeans',
 			\}
+
+" IndentLine
+set conceallevel=1
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 1
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_color_gui = '#FFFFFF'
+"let g:indentLine_bgcolor_gui = 
+let g:indentLine_char = '¦'
+let g:indentLIne_enabled = 0
+
+" FUNCTION
+" ==================
+let g:toggleRNU_is_off = 1 
+function! ToggleRNU()
+	if g:toggleRNU_is_off
+		set rnu
+		let g:toggleRNU_is_off = 0
+	else
+		set nornu
+		let g:toggleRNU_is_off = 1
+	endif
+endfunction

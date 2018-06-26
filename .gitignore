@@ -1,0 +1,5 @@
+# Ignore other files
+# track only _vimrc and _gvimrc
+/vim
+/vim80
+/vimfiles

@@ -1,0 +1,28 @@
+" Source vimrc
+" =============
+source $MYVIMRC
+
+" Disable error bell
+" ==================
+set noeb vb t_vb=
+au GUIEnter * set vb t_vb=
+
+" Menu and Toolbar
+" ================
+set guioptions-=T "remove toolbar
+set guioptions-=r
+set nu "set number on ('set rnu' -> relative number)
+
+" Window size and font
+" ===================
+set gfn=Ubuntu_mono:h10:cANSI:qDRAFT "set font
+set lines=40 "set height
+set columns=90 "set width
+
+" Theme and color
+" ================
+colorscheme onehalfdark 
+syntax on
+highlight LineNr guibg=black
+
+
